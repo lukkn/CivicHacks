@@ -13,15 +13,27 @@ class MainPage extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/login'),
-            child: const Text('Login', style: TextStyle(color: Colors.white)),
+            child: const Text('Login', style: TextStyle(color: Colors.black)),
           ),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, '/signup'),
-            child: const Text('Sign Up', style: TextStyle(color: Colors.white)),
+            child: const Text('Sign Up', style: TextStyle(color: Colors.black)),
           ),
         ],
       ),
-      body: const Center(child: Text('Main Page Content')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Main Page Content'),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () => Navigator.pushNamed(context, '/project'),
+              child: const Text('Go to Projects'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

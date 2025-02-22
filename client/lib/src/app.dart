@@ -7,6 +7,9 @@ import 'project/project_page.dart';
 import 'screens/main_page.dart';
 import 'screens/login_page.dart';
 import 'screens/signup_page.dart';
+import 'project/create_project_page.dart';
+import 'project/project_detail_page.dart';
+import 'models/project.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -68,6 +71,9 @@ class MyApp extends StatelessWidget {
             '/login': (context) => const LoginPage(),
             '/signup': (context) => const SignupPage(),
             '/project': (context) => const ProjectPage(),
+            '/create': (context) => const CreateProjectPage(),
+            '/projects/1': (context) =>
+                ProjectDetailPage(project: Project.sampleProject()),
           },
         );
       },
