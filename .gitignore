@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+
 # venv
 venv
 
@@ -68,3 +69,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+#sass
+*.scss
+*.css.map

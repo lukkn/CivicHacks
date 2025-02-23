@@ -42,7 +42,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("/home");
         }, 1000);
       } else {
         handleError(message);
@@ -58,36 +58,40 @@ const Login = () => {
   };
 
   return (
-    <div className="form_container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Enter your password"
-            onChange={handleOnChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-        <span>
-          Already have an account? <Link to={"/signup"}>Signup</Link>
-        </span>
-      </form>
-      <ToastContainer />
+    <div className="container">
+      <div className="image-container"></div>
+      <div className="form-container">
+        <h2>Welcome Back!</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={handleOnChange}
+            />
+          </div>
+          <button type="submit">Log In</button>
+          <span>
+            Don't have an account? <Link to={"/signup"}>Signup</Link>
+          </span>
+        </form>
+        <ToastContainer />
+      </div>
     </div>
   );
 };
+
 export default Login;
