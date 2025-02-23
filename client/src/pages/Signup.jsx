@@ -10,7 +10,7 @@ const Signup = () => {
     password: "",
     username: "",
   });
-  const { email, password, username } = inputValue;
+  const { email, password, username} = inputValue;
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -95,7 +95,7 @@ const Signup = () => {
         </div>
         <button type="submit">Submit</button>
         <span>
-          Don't have an account? <Link to={"/login"}>Login</Link>
+          Already have an account? <Link to={"/login"}>Login</Link>
         </span>
       </form>
       <ToastContainer />

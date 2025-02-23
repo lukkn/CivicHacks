@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require("dotenv").config();
+const cookieParser = require("cookie-parser");
+const authRoute = require("./Routes/AuthRoute");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,10 +17,12 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "build")));
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
+app.use("/", authRoute);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
-    dbName: "voting-plan",
+    dbName: "scienceMinions",
 }).then(() => {
     app.listen(PORT, () => {
         console.log(`Server is running on PORT ${PORT}`);
