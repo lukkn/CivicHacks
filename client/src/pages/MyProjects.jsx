@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import './Projects.css';
 
 const MyProjects = () => {
@@ -39,7 +39,11 @@ const MyProjects = () => {
   }, [userInfo]);
 
   const handleProjectClick = (project) => {
-    navigate(`/project/${project.project._id}`, { state: { project: project.project } });
+    if (project.active) {
+      window.location.href = 'https://graphs.scienceminions.study/';
+    } else {
+      navigate(`/project/${project.project._id}`, { state: { project: project.project } });
+    }
   };
 
   return (
