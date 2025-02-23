@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Projects.css';
 
 const BrowseProjects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
 
   // Fetching projects from backend
   async function fetchProjects() {
@@ -24,7 +25,7 @@ const BrowseProjects = () => {
     fetchProjects();
   }, []);
 
-  const categories = ['All', 'Environmental', 'Wildlife', 'Annotation'];
+  const categories = ['All', 'Science', 'Technology', 'Engineering'];
 
   const filteredProjects = projects.filter((project) => {
     return (
@@ -32,6 +33,10 @@ const BrowseProjects = () => {
       project.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   });
+
+  const handleProjectClick = (project) => {
+    navigate(`/project/${project._id}`, { state: { project } });
+  };
 
   return (
     <div className="projects">
@@ -56,10 +61,14 @@ const BrowseProjects = () => {
       </div>
       <div className="projects-list">
         {filteredProjects.map((project) => (
-          <Link key={project._id} to={`/project/${project._id}`} className="project-item">
+          <div
+            key={project._id}
+            className="project-item"
+            onClick={() => handleProjectClick(project)}
+          >
             <h3>{project.name}</h3>
             <p>{project.category}</p>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

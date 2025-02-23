@@ -8,6 +8,12 @@ h2 {
   margin-bottom: 20px;
 }
 
+h3 {
+  font-size: 2vw;
+  color: #473622;
+  margin-bottom: 10px;
+}
+
 .container {
   display: flex;
   width: 100vw;

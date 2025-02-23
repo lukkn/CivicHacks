@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import './Projects.css';
 
 const MyProjects = () => {
@@ -7,6 +7,7 @@ const MyProjects = () => {
   const [showCurrentProjects, setShowCurrentProjects] = useState(true);
   const [currentProjects, setCurrentProjects] = useState([]);
   const [pastProjects, setPastProjects] = useState([]);
+  const navigate = useNavigate();
 
   // Fetching projects from backend
   async function getMyProjects() {
@@ -20,6 +21,7 @@ const MyProjects = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log('Fetched projects:', data); // Log the fetched projects
         const current = data.filter((project) => project.active);
         const past = data.filter((project) => !project.active);
         setCurrentProjects(current);
@@ -35,6 +37,10 @@ const MyProjects = () => {
       getMyProjects();
     }
   }, [userInfo]);
+
+  const handleProjectClick = (project) => {
+    navigate(`/project/${project.project._id}`, { state: { project: project.project } });
+  };
 
   return (
     <div className="projects">
@@ -56,17 +62,25 @@ const MyProjects = () => {
       <div className="projects-grid">
         {showCurrentProjects ? (
           currentProjects.map((project) => (
-            <Link key={project.project._id} to={`/project/${project.project._id}`} className="project-item">
+            <div
+              key={project.project._id}
+              className="project-item"
+              onClick={() => handleProjectClick(project)}
+            >
               <h3>{project.project.name}</h3>
               <p>{project.project.category}</p>
-            </Link>
+            </div>
           ))
         ) : (
           pastProjects.map((project) => (
-            <Link key={project.project._id} to={`/project/${project.project._id}`} className="project-item">
+            <div
+              key={project.project._id}
+              className="project-item"
+              onClick={() => handleProjectClick(project)}
+            >
               <h3>{project.project.name}</h3>
               <p>{project.project.category}</p>
-            </Link>
+            </div>
           ))
         )}
       </div>
