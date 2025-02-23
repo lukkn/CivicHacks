@@ -1,18 +1,34 @@
-.my-projects {
+.projects {
   padding: 20px;
   background-color: #ede3e1;
 }
-.my-projects h2 {
+.projects h2 {
   font-size: 2rem;
   color: #473622;
   margin-bottom: 20px;
 }
-.my-projects .toggle-buttons {
+.projects .filters {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
-.my-projects .toggle-buttons button {
+.projects .filters input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 200px;
+}
+.projects .filters select {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+.projects .toggle-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.projects .toggle-buttons button {
   padding: 10px 20px;
   background-color: #cc876a;
   color: white;
@@ -21,30 +37,35 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.my-projects .toggle-buttons button:hover {
+.projects .toggle-buttons button:hover {
   background-color: #896b53;
 }
-.my-projects .toggle-buttons button.active {
+.projects .toggle-buttons button.active {
   background-color: #896b53;
 }
-.my-projects .projects-list {
+.projects .projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.projects .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
-.my-projects .project-item {
+.projects .project-item {
   background-color: #c8dbbf;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.my-projects .project-item h3 {
+.projects .project-item h3 {
   font-size: 1.5rem;
   color: #473622;
   margin-bottom: 10px;
 }
-.my-projects .project-item p {
+.projects .project-item p {
   font-size: 1rem;
   color: #704e33;
 }

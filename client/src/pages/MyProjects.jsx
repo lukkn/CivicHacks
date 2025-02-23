@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Projects.scss';
+import './Projects.css';
 
 const MyProjects = () => {
   const [showCurrentProjects, setShowCurrentProjects] = useState(true);
@@ -16,7 +16,7 @@ const MyProjects = () => {
   ];
 
   return (
-    <div className="my-projects">
+    <div className="projects">
       <h2>My Projects</h2>
       <div className="toggle-buttons">
         <button
@@ -32,7 +32,7 @@ const MyProjects = () => {
           Past Projects
         </button>
       </div>
-      <div className="projects-list">
+      <div className="projects-grid">
         {showCurrentProjects ? (
           currentProjects.map((project) => (
             <div key={project.id} className="project-item">
