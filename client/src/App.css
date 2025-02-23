@@ -1,0 +1,88 @@
+* {
+  font-family: Poppins, sans-serif;
+}
+
+h2 {
+  font-size: 4vw;
+  color: #473622;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.image-container {
+  display: none;
+  background-image: url("./images/graphic.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+}
+.form-container form {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.form-container form .input-group {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.form-container form label {
+  display: block;
+  font-size: 1rem;
+  color: #704e33;
+  margin-bottom: 8px;
+}
+.form-container form input {
+  display: block;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #ede3e1;
+}
+.form-container form button {
+  padding: 10px 20px;
+  background-color: #cc876a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.form-container form button:hover {
+  background-color: #896b53;
+}
+.form-container form span {
+  font-size: 0.8rem;
+  color: #704e33;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .image-container {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */

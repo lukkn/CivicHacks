@@ -10,7 +10,7 @@ const Signup = () => {
     password: "",
     username: "",
   });
-  const { email, password, username} = inputValue;
+  const { email, password, username } = inputValue;
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -25,7 +25,7 @@ const Signup = () => {
     });
   const handleSuccess = (msg) =>
     toast.success(msg, {
-      position: "bottom-right",
+      position: "bottom-left",
     });
 
   const handleSubmit = async (e) => {
@@ -59,46 +59,48 @@ const Signup = () => {
   };
 
   return (
-    <div className="form_container">
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Enter your password"
-            onChange={handleOnChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            placeholder="Enter your username"
-            onChange={handleOnChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-        <span>
-          Already have an account? <Link to={"/login"}>Login</Link>
-        </span>
-      </form>
-      <ToastContainer />
+    <div className="container">
+      <div className="image-container"></div>
+      <div className="form-container">
+        <h2>Create Account</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              placeholder="Enter your username"
+              onChange={handleOnChange}
+            />
+          </div>
+          <button type="submit">Sign Up</button>
+          <span>
+            Already have an account? <Link to={"/login"}>Login</Link>
+          </span>
+        </form>
+        <ToastContainer />
+      </div>
     </div>
   );
 };
