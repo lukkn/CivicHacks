@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import Chatbot from './components/Chatbot'; // Import Chatbot component
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function Layout() {
           <Outlet context={[userInfo, setUserInfo]} />
         </main>
       </div>
+      <Chatbot /> {/* Add Chatbot component */}
     </div>
   )
 }
