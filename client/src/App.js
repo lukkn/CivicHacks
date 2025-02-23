@@ -1,6 +1,6 @@
 import './App.css';
 import { Outlet, Route, Routes } from "react-router-dom";
-import { Main, Login, Signup, Home } from './pages';
+import { Main, Login, Signup, Home, MyProjects, BrowseProjects } from './pages';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -17,6 +17,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route element={<Layout />}>
             <Route path="/home" element = {<Home />} />
+            <Route path="/my_projects" element = {<MyProjects />} />
+            <Route path="/browse_projects" element = {<BrowseProjects />} />
           </Route>
         </Routes>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import './Sidebar.scss';
+import './Sidebar.css';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +29,9 @@ useEffect(() => {
         <img src="logo.svg" alt="Logo" />
         <ul>
           <li><Link to="/home">Home</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
-          <li><Link to="/settings">Settings</Link></li>
+          <li><Link to="/my_projects">My Projects</Link></li>
+          <li><Link to="/browse_projects">Browse Projects</Link></li>
+          <li></li>
         </ul>
       </div>
       <div className="hamburger" onClick={toggleSidebar}>
