@@ -87,9 +87,9 @@ h2 {
 }
 
 .navbar {
-  width: 100%;
-  z-index: 1000;
-  overflow: hidden;
+  width: calc(100% - 200px); /* Adjust this value if the sidebar width changes */
+  margin-left: 200px; /* Adjust this value if the sidebar width changes */
+  z-index: 1001; /* Ensure navbar is above main content */
 }
 
 .layout-content {
@@ -101,35 +101,64 @@ h2 {
 .sidebar {
   width: 200px;
   height: 100vh;
+  background-color: #584936;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
   transition: transform 0.3s ease-in-out;
   transform: translateX(0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
-
-main {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+.sidebar.open {
+  transform: translateX(0);
 }
-
 @media (max-width: 768px) {
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
     transform: translateX(-100%);
-    z-index: 1000;
   }
   .sidebar.open {
     transform: translateX(0);
   }
-  main {
-    margin-left: 0;
-  }
 }
+
+.sidebar .logo {
+  margin-bottom: 20px;
+}
+.sidebar .logo img {
+  width: 150px;
+  height: auto;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar li {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  color: #ede3e1;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px 0;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #704e33;
+}
+
 .hamburger {
   display: none;
   cursor: pointer;
@@ -160,6 +189,33 @@ main {
   }
 }
 
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  margin-left: 200px;
+  background-color: #ede3e1;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 1000;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .navbar {
+    width: 100%;
+    margin-left: 0;
+  }
+  main {
+    margin-left: 0;
+  }
+}
 @media (min-width: 768px) {
   .image-container {
     display: block;

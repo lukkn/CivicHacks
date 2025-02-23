@@ -1,22 +1,25 @@
 import React from "react";
+import { useOutletContext } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
+  const [userInfo] = useOutletContext();
+
   return (
     <div className="dashboard">
-      <h1>User Dashboard</h1>
-      <p>Welcome back, [User]!</p>
+      <h2>Welcome back, {userInfo.username}!</h2>
       <div className="dashboard-content">
         <div className="dashboard-item">
-          <h2>Profile</h2>
-          <p>View and edit your profile information.</p>
+          <h1>Total projects</h1>
+          <h2>3</h2>
         </div>
         <div className="dashboard-item">
-          <h2>Activities</h2>
-          <p>Check out your recent activities and progress.</p>
+          <h1>Current projects</h1>
+          <h2>2</h2>
         </div>
         <div className="dashboard-item">
-          <h2>Settings</h2>
-          <p>Manage your account settings and preferences.</p>
+          <h1>Devices Checked Out</h1>
+          <h2>2</h2>
         </div>
       </div>
     </div>

@@ -25,11 +25,6 @@ function Navbar(props) {
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <ul>
-          <li><Link to="/home"><img src="logo.svg" alt="Logo" /></Link></li>
-        </ul>
-      </div>
       <div className="icons">
         <img src="notification.svg" alt="Notification" />
         <img src="mail.svg" alt="Mail" />
