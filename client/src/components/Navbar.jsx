@@ -1,50 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+
+import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
 
 function Navbar(props) {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setDropdownOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   return (
     <nav className="navbar">
-      <div className="logo">
-        <ul>
-          <li><Link to="/home"><img src="logo.svg" alt="Logo" /></Link></li>
-        </ul>
-      </div>
-      <div className="icons">
-        <img src="notification.svg" alt="Notification" />
-        <img src="mail.svg" alt="Mail" />
-        <div className="user-dropdown" ref={dropdownRef}>
-          <img src="user.svg" alt="User" onClick={toggleDropdown} />
-          {dropdownOpen && (
-            <div className="dropdown-menu">
-              <button onClick={props.logout}>Log Out</button>
-            </div>
-          )}
+        <div>
+            <ul>
+                <li><Link to="/home">Home</Link></li>
+            </ul>
         </div>
-      </div>
+        <button onClick={props.logout}>Log Out</button>
     </nav>
   );
-}
+};
 
 export default Navbar;
 

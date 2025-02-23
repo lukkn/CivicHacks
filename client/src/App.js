@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
 
 function App() {
   return (
@@ -51,16 +50,12 @@ function Layout() {
   };
 
   return (
-    <div className="layout">
+    <main>
       <Navbar logout={Logout}/>
-      <div className="layout-content">
-        <Sidebar />
-        <main>
-          <Outlet context={[userInfo, setUserInfo]} />
-        </main>
-      </div>
-    </div>
+      <Outlet context={[userInfo, setUserInfo]} />
+    </main>
   )
 }
+
 
 export default App;
