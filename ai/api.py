@@ -1,8 +1,7 @@
 from flask import Flask, request, jsonify
-from embedchain import App
+from embed import rag_app
 
 app = Flask(__name__)
-rag_app = App()
 
 @app.route("/query", methods=["POST"])
 def query_document():
