@@ -51,7 +51,6 @@ const Profile = () => {
             MyProjects.map((project) => (
               <Link key={project.project._id} to={`/project/${project.project._id}`} className="project-item">
                 <h4>{project.project.name}</h4>
-                <p>{project.project.description}</p>
               </Link>
             ))
           ) : (

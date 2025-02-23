@@ -25,7 +25,7 @@ const BrowseProjects = () => {
     fetchProjects();
   }, []);
 
-  const categories = ['All', 'Science', 'Technology', 'Engineering'];
+  const categories = ['All', 'Environmental', 'Wildlife', 'Annotation'];
 
   const filteredProjects = projects.filter((project) => {
     return (

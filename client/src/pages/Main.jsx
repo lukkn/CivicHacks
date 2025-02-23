@@ -12,7 +12,7 @@ const Main = () => {
       <div className="image-container"></div>
       <div className="form-container">
       <div className="content">
-        <h1>Welcome to Science Minion</h1>
+        <h1>Welcome to Science Minions</h1>
         <p>Your one-stop platform for all science-related activities.</p>
         <div className="additional-content">
         <h1>Explore Our Features</h1>
