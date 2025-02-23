@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Projects.scss';
+import './Projects.css';
 
 const BrowseProjects = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [projects, setProjects] = useState([]);
 
-  const projects = [
-    { id: 1, name: 'Project A', description: 'Description of Project A', category: 'Science' },
-    { id: 2, name: 'Project B', description: 'Description of Project B', category: 'Technology' },
-    { id: 3, name: 'Project C', description: 'Description of Project C', category: 'Engineering' },
-  ];
+  // Fetching projects from backend
+  async function fetchProjects() {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/all_projects`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('Fetched projects:', data); // Log the fetched projects
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching projects:', error);
+      });
+  }
 
-  const categories = ['All', 'Science', 'Technology', 'Engineering'];
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const categories = ['All', 'Environmental', 'Wildlife', 'Annotation'];
 
   const filteredProjects = projects.filter((project) => {
     return (
@@ -44,9 +56,9 @@ const BrowseProjects = () => {
       </div>
       <div className="projects-list">
         {filteredProjects.map((project) => (
-          <Link key={project.id} to={`/project/${project.id}`} className="project-item">
+          <Link key={project._id} to={`/project/${project._id}`} className="project-item">
             <h3>{project.name}</h3>
-            <p>{project.description}</p>
+            <p>{project.category}</p>
           </Link>
         ))}
       </div>

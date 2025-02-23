@@ -27,6 +27,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "https://www.gravatar.com/avatar/",
   },
+  projects: [
+    {
+      project: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Project",
+      },
+      active: {
+        type: Boolean,
+        default: true,
+      },
+    },
+  ],
 });
 
 userSchema.pre("save", async function () {

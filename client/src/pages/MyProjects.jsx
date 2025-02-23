@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Projects.scss';
+import React, { useEffect, useState } from 'react';
+import { Link, useOutletContext } from 'react-router-dom';
+import './Projects.css';
 
 const MyProjects = () => {
+  const [userInfo] = useOutletContext();
   const [showCurrentProjects, setShowCurrentProjects] = useState(true);
+  const [currentProjects, setCurrentProjects] = useState([]);
+  const [pastProjects, setPastProjects] = useState([]);
 
-  const currentProjects = [
-    { id: 1, name: 'Current Project A', description: 'Description of Current Project A' },
-    { id: 2, name: 'Current Project B', description: 'Description of Current Project B' },
-  ];
+  // Fetching projects from backend
+  async function getMyProjects() {
+    const body = {
+      userId: userInfo._id, // Send user ID in the request body
+    };
+    fetch(`${process.env.REACT_APP_SERVER_URL}/my_projects`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const current = data.filter((project) => project.active);
+        const past = data.filter((project) => !project.active);
+        setCurrentProjects(current);
+        setPastProjects(past);
+      })
+      .catch((error) => {
+        console.error('Error fetching projects:', error);
+      });
+  }
 
-  const pastProjects = [
-    { id: 1, name: 'Past Project A', description: 'Description of Past Project A' },
-    { id: 2, name: 'Past Project B', description: 'Description of Past Project B' },
-    { id: 3, name: 'Past Project C', description: 'Description of Past Project C' },
-  ];
+  useEffect(() => {
+    if (userInfo._id) {
+      getMyProjects();
+    }
+  }, [userInfo]);
 
   return (
     <div className="projects">
@@ -36,16 +56,16 @@ const MyProjects = () => {
       <div className="projects-grid">
         {showCurrentProjects ? (
           currentProjects.map((project) => (
-            <Link key={project.id} to={`/project/${project.id}`} className="project-item">
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
+            <Link key={project.project._id} to={`/project/${project.project._id}`} className="project-item">
+              <h3>{project.project.name}</h3>
+              <p>{project.project.category}</p>
             </Link>
           ))
         ) : (
           pastProjects.map((project) => (
-            <Link key={project.id} to={`/project/${project.id}`} className="project-item">
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
+            <Link key={project.project._id} to={`/project/${project.project._id}`} className="project-item">
+              <h3>{project.project.name}</h3>
+              <p>{project.project.category}</p>
             </Link>
           ))
         )}
