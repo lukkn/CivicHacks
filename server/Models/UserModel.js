@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
+  bio: {
+    type: String,
+    default: "",
+  },
+  image: {
+    type: String,
+    default: "https://www.gravatar.com/avatar/",
+  },
 });
 
 userSchema.pre("save", async function () {

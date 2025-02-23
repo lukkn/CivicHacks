@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Projects.css';
+import { Link } from 'react-router-dom';
+import './Projects.scss';
 
 const BrowseProjects = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -43,10 +44,10 @@ const BrowseProjects = () => {
       </div>
       <div className="projects-list">
         {filteredProjects.map((project) => (
-          <div key={project.id} className="project-item">
+          <Link key={project.id} to={`/project/${project.id}`} className="project-item">
             <h3>{project.name}</h3>
             <p>{project.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

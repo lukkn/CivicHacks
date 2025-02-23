@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Projects.css';
+import { Link } from 'react-router-dom';
+import './Projects.scss';
 
 const MyProjects = () => {
   const [showCurrentProjects, setShowCurrentProjects] = useState(true);
@@ -35,17 +36,17 @@ const MyProjects = () => {
       <div className="projects-grid">
         {showCurrentProjects ? (
           currentProjects.map((project) => (
-            <div key={project.id} className="project-item">
+            <Link key={project.id} to={`/project/${project.id}`} className="project-item">
               <h3>{project.name}</h3>
               <p>{project.description}</p>
-            </div>
+            </Link>
           ))
         ) : (
           pastProjects.map((project) => (
-            <div key={project.id} className="project-item">
+            <Link key={project.id} to={`/project/${project.id}`} className="project-item">
               <h3>{project.name}</h3>
               <p>{project.description}</p>
-            </div>
+            </Link>
           ))
         )}
       </div>

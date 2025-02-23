@@ -1,6 +1,6 @@
 import './App.css';
 import { Outlet, Route, Routes } from "react-router-dom";
-import { Main, Login, Signup, Home, MyProjects, BrowseProjects } from './pages';
+import { Main, Login, Signup, Home, MyProjects, BrowseProjects, ProjectDetails, Profile, Settings, Achievements, Account } from './pages';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -17,8 +17,13 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route element={<Layout />}>
             <Route path="/home" element = {<Home />} />
-            <Route path="/my_projects" element = {<MyProjects />} />
-            <Route path="/browse_projects" element = {<BrowseProjects />} />
+            <Route path="/my_projects" element={<MyProjects />} /> {/* Add route for MyProjects */}
+            <Route path="/browse_projects" element={<BrowseProjects />} /> {/* Add route for BrowseProjects */}
+            <Route path="/project/:id" element={<ProjectDetails />} /> {/* Add route for ProjectDetails */}
+            <Route path="/profile" element={<Profile />} /> {/* Add route for Profile */}
+            <Route path="/settings" element={<Settings />} /> {/* Add route for Settings */}
+            <Route path="/achievements" element={<Achievements />} /> {/* Add route for Achievements */}
+            <Route path="/account" element={<Account />} /> {/* Add route for Account */}
           </Route>
         </Routes>
     </div>

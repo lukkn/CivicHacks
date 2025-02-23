@@ -76,6 +76,25 @@
   align-items: flex-start;
   z-index: 1100;
 }
+.user-dropdown .dropdown-menu a {
+  text-align: left;
+  text-decoration: none;
+  color: #ede3e1;
+  padding: 10px;
+}
+.user-dropdown .dropdown-menu button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+.user-dropdown .dropdown-menu button:hover {
+  background-color: #dcb5a4;
+}
 .user-dropdown .dropdown-menu button {
   padding: 10px 40px;
   background-color: #ede3e1;

@@ -32,6 +32,10 @@ function Navbar(props) {
           <img src="user.svg" alt="User" onClick={toggleDropdown} />
           {dropdownOpen && (
             <div className="dropdown-menu">
+              <Link to="/profile">Profile</Link>
+              <Link to="/achievements">Achievements</Link>
+              <Link to="/settings">Settings</Link>
+              <Link to="/account">Account</Link>
               <button onClick={props.logout}>Log Out</button>
             </div>
           )}
