@@ -25,5 +25,5 @@ yarn-error.log*
 .env
 
 #sass
-App.scss
-App.css.map
+*.scss
+*.css.map

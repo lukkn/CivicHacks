@@ -78,20 +78,19 @@ $caf-noir: #473622ff;
 }
 
 .user-dropdown {
-  position: relative;
   display: flex;
   align-items: center;
 
   .dropdown-menu {
     position: absolute;
-    top: 30px;
-    right: -20px;
     background-color: $beaver;
+    top: 60px;
+    right: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    z-index: 1000;
+    z-index: 1100;
   }
 
   .dropdown-menu button {
